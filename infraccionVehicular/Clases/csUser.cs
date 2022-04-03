@@ -60,6 +60,7 @@ namespace infraccionVehicular.Clases
         public Int32 insertarUsuario(string username, string password, int agenteID)
         {
             Int32 respuesta = 0;
+            string consulta = "insert into user(username, password, agentId) values( ";
 
             try
             {
@@ -67,11 +68,15 @@ namespace infraccionVehicular.Clases
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
                 cn.Open();
 
-                MySqlCommand command = new MySqlCommand("insert into user(username,password,agentId) values ('" + username + "','" + password + "'," + agenteID + ")", cn);
+                MySqlCommand command = cn.CreateCommand();
+                command.CommandText = consulta;
+                command.CommandText += string.Format("'{0}','{1}',{2}); select last_insert_id();", username, password, agenteID);
 
-                respuesta = command.ExecuteNonQuery();
+                respuesta = Convert.ToInt32(command.ExecuteScalar());
+
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
