@@ -31,15 +31,15 @@ namespace infraccionVehicular
         }
 
         [WebMethod]
-        public Int32 save(string description, double amount, int vehicleId)
+        public Int32 save(string description, double amount)
         {
-            return new Clases.csSanction().save(description, amount, vehicleId);
+            return new Clases.csSanction().save(description, amount);
         }
 
         [WebMethod]
-        public Int32 update(string description, double amount, int vehicleId, int id)
+        public Int32 update(string description, double amount, int id)
         {
-            return new Clases.csSanction().update(description, amount, vehicleId, id);
+            return new Clases.csSanction().update(description, amount, id);
         }
 
         [WebMethod]
