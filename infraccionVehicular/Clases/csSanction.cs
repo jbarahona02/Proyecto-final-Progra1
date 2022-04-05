@@ -33,7 +33,7 @@ namespace infraccionVehicular.Clases
 
             return ds;
         }
-
+       
         public DataSet findById(int id)
         {
             DataSet ds = new DataSet();
@@ -57,10 +57,10 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public Int32 save(String description, Double amount, Int32 vehicleId)
+        public Int32 save(String description, Double amount)
         {
             Int32 result = 0;
-            string insert = "insert into sanction(description, amount, vehicleId) values( ";
+            string insert = "insert into sanction(description, amount) values( ";
 
             try
             {
@@ -70,11 +70,10 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = insert;
-                cmd.CommandText += string.Format("'{0}', {1}, {2}); select last_insert_id();", description, amount, vehicleId);
+                cmd.CommandText += string.Format("'{0}', {1}); select last_insert_id();", description, amount);
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
-
             }
             catch (Exception ex)
             {
@@ -84,10 +83,9 @@ namespace infraccionVehicular.Clases
             return result;
         }
 
-        public Int32 update(String description, Double amount, Int32 vehicleId, int id)
+        public Int32 update(String description, Double amount, int id)
         {
             Int32 result = 0;
-
 
             try
             {
@@ -95,11 +93,10 @@ namespace infraccionVehicular.Clases
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
                 cn.Open();
 
-                MySqlCommand command = new MySqlCommand("update sanction set description='" + description + "',amount=" + amount + ",vehicleId= " + vehicleId + " where id=" + id + "", cn);
+                MySqlCommand command = new MySqlCommand("update sanction set description='" + description + "',amount=" + amount + " where id=" + id + "", cn);
 
                 result = command.ExecuteNonQuery();
                 cn.Close();
-
             }
             catch (Exception ex)
             {
@@ -108,7 +105,6 @@ namespace infraccionVehicular.Clases
 
             return result;
         }
-
 
         public Int32 delete(int id)
         {
