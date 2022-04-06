@@ -24,7 +24,7 @@ namespace infraccionVehicular
         }
 
         [WebMethod]
-        public DataSet infractionDetail(string id) {
+        public DataSet infractionDetail(int id) {
             return new Clases.csInfractionDetail().infractionDetail(id);
         }
 
