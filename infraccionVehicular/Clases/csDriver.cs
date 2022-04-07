@@ -36,7 +36,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public DataSet findDriver(int id)
+        public DataSet findDriver(string driverLicense)
         {
             DataSet ds = new DataSet();
             try
@@ -46,7 +46,7 @@ namespace infraccionVehicular.Clases
                 cn.Open();
 
                 MySqlDataAdapter dataAdapter;
-                dataAdapter = new MySqlDataAdapter("select *from driver where id = " + id, cn);
+                dataAdapter = new MySqlDataAdapter("select *from driver where driverLicense = " + driverLicense, cn);
                 dataAdapter.Fill(ds);
 
                 cn.Close();
