@@ -12,7 +12,7 @@ namespace infraccionVehicular.Clases
     {
         String connection = "cnConnection";
 
-        public DataSet findAll()
+        public DataSet findAgents()
         {
             DataSet ds = new DataSet();
 
@@ -36,7 +36,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public DataSet findById(int id)
+        public DataSet findAgent(int id)
         {
             DataSet ds = new DataSet();
             try
@@ -60,7 +60,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public Int32 save(string name, string lastName, string dpi, string age, string phoneNumber)
+        public Int32 saveAgent(string name, string lastName, string dpi, string age, string phoneNumber)
         {
             Int32 result = 0;
             string insert = "insert into agent(name, lastName, dpi, age, phoneNumber) value( ";
@@ -85,7 +85,7 @@ namespace infraccionVehicular.Clases
 
             return result;
         }
-        public Int32 update(string name, string lastName, string dpi, string age, string phoneNumber, int id)
+        public Int32 updateAgent(int id, string name, string lastName, string dpi, string age, string phoneNumber)
         {
             Int32 result = 0;
 
@@ -108,7 +108,7 @@ namespace infraccionVehicular.Clases
             return result;
         }
 
-        public Int32 delete(int id)
+        public Int32 deleteAgent(int id)
         {
             Int32 respuesta = 0;
 
