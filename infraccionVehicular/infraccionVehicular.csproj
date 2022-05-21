@@ -74,13 +74,55 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <Content Include="wsAgent.asmx" />
+    <Content Include="wsDriver.asmx" />
+    <Content Include="wsInfraction.asmx" />
+    <Content Include="wsInfractionDetail.asmx" />
+    <Content Include="wsPayment.asmx" />
+    <Content Include="wsSanction.asmx" />
     <Content Include="wsUser.asmx" />
+    <Content Include="wsVehicle.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\csAgent.cs" />
+    <Compile Include="Clases\csDriver.cs" />
+    <Compile Include="Clases\csInfraction.cs" />
+    <Compile Include="Clases\csInfractionDetail.cs" />
+    <Compile Include="Clases\csPayment.cs" />
+    <Compile Include="Clases\csSanction.cs" />
     <Compile Include="Clases\csUser.cs" />
+    <Compile Include="Clases\csVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wsAgent.asmx.cs">
+      <DependentUpon>wsAgent.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsDriver.asmx.cs">
+      <DependentUpon>wsDriver.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsInfraction.asmx.cs">
+      <DependentUpon>wsInfraction.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsInfractionDetail.asmx.cs">
+      <DependentUpon>wsInfractionDetail.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsPayment.asmx.cs">
+      <DependentUpon>wsPayment.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsSanction.asmx.cs">
+      <DependentUpon>wsSanction.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="wsUser.asmx.cs">
       <DependentUpon>wsUser.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wsVehicle.asmx.cs">
+      <DependentUpon>wsVehicle.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
