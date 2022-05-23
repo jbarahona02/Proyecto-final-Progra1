@@ -57,6 +57,32 @@ namespace infraccionVehicular.Clases
 
         }
 
+        public DataSet infractionDetailsByInfractionId(int infractionId)
+        {
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+
+                MySqlConnection cn = new MySqlConnection();
+
+                cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
+                cn.Open();
+
+                MySqlDataAdapter da = new MySqlDataAdapter("select * from infractiondetailid where infractionId = " + infractionId, cn);
+
+                da.Fill(ds);
+
+                cn.Close();
+
+            }
+            catch (Exception e) { }
+
+            return ds;
+
+        }
+
         public Int32 insertInfractionDetail(int infractionId, int sanctionId) {
 
             Int32 respuesta = 0;
@@ -125,5 +151,29 @@ namespace infraccionVehicular.Clases
         
         }
 
+        public Int32 deleteInfractionDetailsByInfractionId(int infractionId)
+        {
+
+            Int32 respuesta = 0;
+
+            try
+            {
+
+                MySqlConnection cn = new MySqlConnection();
+                cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
+                cn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("delete from infractiondetailid where infractionId = " + infractionId, cn);
+
+                respuesta = cmd.ExecuteNonQuery();
+
+                cn.Close();
+
+            }
+            catch (Exception e) { }
+
+            return respuesta;
+
+        }
     }
 }
