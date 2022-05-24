@@ -8,7 +8,7 @@ using System.Web;
 
 namespace infraccionVehicular.Clases
 {
-    public class csInfractionReport
+    public class csReports
     {
         public DataSet infractionReport(int idInfraction) 
         {
@@ -35,6 +35,37 @@ namespace infraccionVehicular.Clases
                 cn.Close();
 
             } catch (Exception ex)
+            {
+
+            }
+
+            return dsi;
+
+        }
+
+        public DataSet vehicleSolvencyReport(string driverLicense)
+        {
+            DataSet dsi = new DataSet();
+
+            try
+            {
+                MySqlConnection cn = new MySqlConnection();
+
+                cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
+                cn.Open();
+
+                MySqlDataAdapter da;
+
+                da = new MySqlDataAdapter("SELECT v.licensePlate as licensePlate, d.name as driverName, d.driverLicense as licenseDriver, " +
+                                          "s.description as infraction FROM vehicle v INNER JOIN driver d on v.driverId = d.driverLicense " +
+                                          "INNER JOIN infraction i on v.id = i.vehicleId INNER JOIN infractionDetailId iDI on i.id = iDI.infractionId " +
+                                          "INNER JOIN sanction s on iDI.sanctionId = s.id WHERE v.licensePlate = " + driverLicense + "and i.status != 'P';", cn);
+
+                da.Fill(dsi);
+                cn.Close();
+
+            }
+            catch (Exception ex)
             {
 
             }

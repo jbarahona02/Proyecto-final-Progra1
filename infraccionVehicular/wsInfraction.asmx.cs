@@ -30,7 +30,7 @@ namespace infraccionVehicular
 
         [WebMethod]
         public Int32 insertInfraction(DateTime date, string status, double total, int agentId, int vehicleId) {
-            return new Clases.csInfraction().insertInfraction(date, status, total, agentId, vehicleId);
+            return new Clases.csInfraction().insertInfraction(date, total, agentId, vehicleId);
         }
 
         [WebMethod]

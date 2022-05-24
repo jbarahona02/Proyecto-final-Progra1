@@ -15,13 +15,19 @@ namespace infraccionVehicular
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
     // [System.Web.Script.Services.ScriptService]
-    public class wsInfractionReport : System.Web.Services.WebService
+    public class wsReports : System.Web.Services.WebService
     {
 
         [WebMethod]
         public DataSet infractionReport(int idInfraction)
         {
-            return new Clases.csInfractionReport().infractionReport(idInfraction);
+            return new Clases.csReports().infractionReport(idInfraction);
+        }
+
+        [WebMethod]
+        public DataSet vehicleSolvencyReport(string licensePlate)
+        {
+            return new Clases.csReports().vehicleSolvencyReport(licensePlate);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace infraccionVehicular.Clases
         
         }
 
-        public Int32 insertInfraction(DateTime date, string status, double total, int agentId, int vehicleId) {
+        public Int32 insertInfraction(DateTime date, double total, int agentId, int vehicleId) {
 
             Int32 respuesta = 0;
 
@@ -67,7 +67,7 @@ namespace infraccionVehicular.Clases
                 cn.Open();
 
                 MySqlCommand cmd = new MySqlCommand("insert into infraction (createdAt, status, total, agentId, vehicleId) + " +
-                    " values ('" + date + "', '" + status + "', " + total + ", " + agentId + ", " + vehicleId + ")", cn);
+                    " values ('" + date + "','N', " + total + ", " + agentId + ", " + vehicleId + ")", cn);
 
                 respuesta = cmd.ExecuteNonQuery();
 
