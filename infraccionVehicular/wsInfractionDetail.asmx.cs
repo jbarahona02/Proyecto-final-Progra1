@@ -19,12 +19,14 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public DataSet infractionDetailList() {
+        public DataSet infractionDetailList()
+        {
             return new Clases.csInfractionDetail().infractionDetailList();
         }
 
         [WebMethod]
-        public DataSet infractionDetail(int id) {
+        public DataSet infractionDetail(int id)
+        {
             return new Clases.csInfractionDetail().infractionDetail(id);
         }
 
@@ -35,17 +37,20 @@ namespace infraccionVehicular
         }
 
         [WebMethod]
-        public Int32 insertInfractionDetail(int infractionId, int sanctionId) {
+        public Int32 insertInfractionDetail(int infractionId, int sanctionId)
+        {
             return new Clases.csInfractionDetail().insertInfractionDetail(infractionId, sanctionId);
         }
 
         [WebMethod]
-        public Int32 updateInfractionDetail(int id, int infractionId, int sanctionId) {
+        public Int32 updateInfractionDetail(int id, int infractionId, int sanctionId)
+        {
             return new Clases.csInfractionDetail().updateInfractionDetail(id, infractionId, sanctionId);
         }
 
         [WebMethod]
-        public Int32 deleteInfractionDetail(int id) {
+        public Int32 deleteInfractionDetail(int id)
+        {
             return new Clases.csInfractionDetail().deleteInfractionDetail(id);
         }
 
@@ -54,5 +59,6 @@ namespace infraccionVehicular
         {
             return new Clases.csInfractionDetail().deleteInfractionDetailsByInfractionId(infractionID);
         }
+
     }
 }

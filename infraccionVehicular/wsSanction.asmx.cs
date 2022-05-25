@@ -19,31 +19,31 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public DataSet findAll()
+        public DataSet findSanctions()
         {
             return new Clases.csSanction().findAll();
         }
 
         [WebMethod]
-        public DataSet findById(int id)
+        public DataSet findSanction(int id)
         {
             return new Clases.csSanction().findById(id);
         }
 
         [WebMethod]
-        public Int32 save(string description, double amount)
+        public Int32 insertSanction(string description, double amount)
         {
             return new Clases.csSanction().save(description, amount);
         }
 
         [WebMethod]
-        public Int32 update(string description, double amount, int id)
+        public Int32 updateSanction(string description, double amount, int id)
         {
             return new Clases.csSanction().update(description, amount, id);
         }
 
         [WebMethod]
-        public Int32 delete(int id)
+        public Int32 deleteSanction(int id)
         {
             return new Clases.csSanction().delete(id);
         }

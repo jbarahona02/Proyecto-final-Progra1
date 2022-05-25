@@ -11,11 +11,13 @@ namespace infraccionVehicular.Clases
     public class csInfractionDetail
     {
 
-        public DataSet infractionDetailList() {
+        public DataSet infractionDetailList()
+        {
 
             DataSet ds = new DataSet();
 
-            try {
+            try
+            {
 
                 MySqlConnection cn = new MySqlConnection();
 
@@ -28,17 +30,20 @@ namespace infraccionVehicular.Clases
 
                 cn.Close();
 
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
             return ds;
-        
+
         }
 
-        public DataSet infractionDetail(int id) {
+        public DataSet infractionDetail(int id)
+        {
 
             DataSet ds = new DataSet();
 
-            try {
+            try
+            {
 
                 MySqlConnection cn = new MySqlConnection();
 
@@ -51,7 +56,8 @@ namespace infraccionVehicular.Clases
 
                 cn.Close();
 
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
             return ds;
 
@@ -83,11 +89,13 @@ namespace infraccionVehicular.Clases
 
         }
 
-        public Int32 insertInfractionDetail(int infractionId, int sanctionId) {
+        public Int32 insertInfractionDetail(int infractionId, int sanctionId)
+        {
 
             Int32 respuesta = 0;
 
-            try {
+            try
+            {
 
                 MySqlConnection cn = new MySqlConnection();
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
@@ -100,40 +108,46 @@ namespace infraccionVehicular.Clases
 
                 cn.Close();
 
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
             return respuesta;
-        
+
         }
 
-        public Int32 updateInfractionDetail(int id, int infractionId, int sanctionId) {
+        public Int32 updateInfractionDetail(int id, int infractionId, int sanctionId)
+        {
 
             Int32 respuesta = 0;
 
-            try {
+            try
+            {
 
                 MySqlConnection cn = new MySqlConnection();
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
                 cn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("update infractiondetailid set infractionId = " + infractionId + 
+                MySqlCommand cmd = new MySqlCommand("update infractiondetailid set infractionId = " + infractionId +
                     ", sanctionId = " + sanctionId + " where id = " + id, cn);
 
                 respuesta = cmd.ExecuteNonQuery();
 
                 cn.Close();
 
-            } catch(Exception e) { }
+            }
+            catch (Exception e) { }
 
             return respuesta;
-        
+
         }
 
-        public Int32 deleteInfractionDetail(int id) {
+        public Int32 deleteInfractionDetail(int id)
+        {
 
             Int32 respuesta = 0;
 
-            try {
+            try
+            {
 
                 MySqlConnection cn = new MySqlConnection();
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
@@ -145,10 +159,11 @@ namespace infraccionVehicular.Clases
 
                 cn.Close();
 
-            } catch(Exception e) { }
+            }
+            catch (Exception e) { }
 
             return respuesta;
-        
+
         }
 
         public Int32 deleteInfractionDetailsByInfractionId(int infractionId)
@@ -175,5 +190,6 @@ namespace infraccionVehicular.Clases
             return respuesta;
 
         }
+
     }
 }

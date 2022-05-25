@@ -19,32 +19,32 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public DataSet findAll()
+        public DataSet findPayments()
         {
             return new Clases.csPayment().findAll();
         }
 
         [WebMethod]
-        public DataSet findById(int id)
+        public DataSet findPayment(int id)
         {
             return new Clases.csPayment().findById(id);
         }
 
         [WebMethod]
-        public Int32  save(double amount, DateTime paidAt, int infractionId)
+        public Int32 insertPayment(double amount, DateTime paidAt, int infractionId)
         {
             return new Clases.csPayment().save(amount, paidAt, infractionId);
         }
 
         [WebMethod]
-        public Int32 update(double amount, DateTime paidAt, int infractionId, int id)
+        public Int32 updatePayment(double amount, DateTime paidAt, int infractionId, int id)
         {
-            return new Clases.csPayment().update(amount, paidAt, infractionId,id);
+            return new Clases.csPayment().update(amount, paidAt, infractionId, id);
         }
 
 
         [WebMethod]
-        public Int32 delete(int id)
+        public Int32 deletePayment(int id)
         {
             return new Clases.csPayment().delete(id);
         }

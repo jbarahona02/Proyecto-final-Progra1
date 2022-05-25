@@ -26,7 +26,8 @@ namespace infraccionVehicular.Clases
                 dataAdapter.Fill(dsi);
                 cn.Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -48,11 +49,12 @@ namespace infraccionVehicular.Clases
                 dataAdapter = new MySqlDataAdapter("select * from user where username ='" + username + "' and password ='" + password + "'", cn);
                 dataAdapter.Fill(dataSet);
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
-           
+
             return dataSet;
 
         }
@@ -70,10 +72,10 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand command = cn.CreateCommand();
                 command.CommandText = consulta;
-                command.CommandText += string.Format("'{0}','{1}',{2}); select last_insert_id();", username, password, agenteID);
+                command.CommandText += string.Format("'{0}','{1}',{2}); select last_insert_id();",username,password,agenteID);
 
                 respuesta = Convert.ToInt32(command.ExecuteScalar());
-
+           
                 cn.Close();
             }
             catch (Exception ex)
@@ -84,7 +86,7 @@ namespace infraccionVehicular.Clases
             return respuesta;
         }
 
-        public Int32 actualizarUsuario(int id,string username, string password)
+        public Int32 actualizarUsuario(int id, string username, string password)
         {
             Int32 respuesta = 0;
 
@@ -98,7 +100,8 @@ namespace infraccionVehicular.Clases
 
                 respuesta = command.ExecuteNonQuery();
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -120,7 +123,8 @@ namespace infraccionVehicular.Clases
 
                 respuesta = command.ExecuteNonQuery();
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }

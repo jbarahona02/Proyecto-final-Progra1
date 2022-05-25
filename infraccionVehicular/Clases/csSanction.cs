@@ -57,7 +57,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public Int32 save(String description, Double amount)
+        public Int32 save(string description, double amount)
         {
             Int32 result = 0;
             string insert = "insert into sanction(description, amount) values( ";

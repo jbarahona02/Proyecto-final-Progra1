@@ -55,7 +55,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public Int32 save(double amount, DateTime paidAt , Int32 infractionId)
+        public Int32 save(double amount, DateTime paidAt, Int32 infractionId)
         {
             Int32 result = 0;
             string insert = "insert into payment(amount, paidAt , infractionId) values( ";
@@ -68,7 +68,7 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = insert;
-                cmd.CommandText += string.Format(" {0} , '{1}' , {2}); select last_insert_id();", amount, paidAt, infractionId);
+                cmd.CommandText += string.Format(" {0} , '{1}' , {2}); select last_insert_id();", amount, paidAt.ToString("yyyy-MM-dd H:mm:ss"), infractionId);
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
@@ -80,7 +80,7 @@ namespace infraccionVehicular.Clases
             return result;
         }
 
-        public Int32 update(double amount, DateTime paidAt, Int32 infractionId, int id)
+        public Int32 update(double amount, DateTime paidAt, int infractionId, int id)
         {
             Int32 result = 0;
 
@@ -90,7 +90,7 @@ namespace infraccionVehicular.Clases
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings[conection].ConnectionString;
                 cn.Open();
 
-                MySqlCommand command = new MySqlCommand("update payment set amount=" + amount + ",paidAt='" + paidAt + "',infractionId=" + infractionId + "where id=" + id + "", cn);
+                MySqlCommand command = new MySqlCommand("update payment set amount=" + amount + ",paidAt='" + paidAt.ToString("yyyy-MM-dd H:mm:ss") + "',infractionId=" + infractionId + " where id=" + id + "", cn);
 
                 result = command.ExecuteNonQuery();
                 cn.Close();

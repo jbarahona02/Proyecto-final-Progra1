@@ -19,31 +19,31 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public DataSet listadoDeUsuarios()
+        public DataSet findUsers()
         {
             return new Clases.csUser().listaDeUsuarios();
         }
 
         [WebMethod]
-        public DataSet loginUsuario(string username, string password)
+        public DataSet loginUser(string username, string password)
         {
             return new Clases.csUser().usuarioLogin(username, password);
         }
 
         [WebMethod]
-        public Int32 insertarUsuario(string username, string password, int agenteID)
+        public Int32 insertUser(string username, string password, int agenteID)
         {
             return new Clases.csUser().insertarUsuario(username, password, agenteID);
         }
 
         [WebMethod]
-        public Int32 actualizarUsuario(int id, string username, string password)
+        public Int32 updateUser(int id, string username, string password)
         {
             return new Clases.csUser().actualizarUsuario(id, username, password);
         }
 
         [WebMethod]
-        public Int32 eliminarUsuario(int userID)
+        public Int32 deleteUser(int userID)
         {
             return new Clases.csUser().eliminarUsuario(userID);
         }

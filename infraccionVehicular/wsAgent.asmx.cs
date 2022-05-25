@@ -31,7 +31,7 @@ namespace infraccionVehicular
         }
 
         [WebMethod]
-        public Int32 saveAgent(string name, string lastName, string dpi, string age, string phoneNumber)
+        public Int32 insertAgent(string name, string lastName, string dpi, string age, string phoneNumber)
         {
             return new Clases.csAgent().saveAgent(name, lastName, dpi, age, phoneNumber);
         }

@@ -28,7 +28,7 @@ namespace infraccionVehicular.Clases
                 cn.Close();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -73,7 +73,7 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = insert;
-                cmd.CommandText += string.Format("'{0}','{1}',{2}); select last_insert_id();", name, lastName, dpi, age, phoneNumber);
+                cmd.CommandText += string.Format("'{0}','{1}','{2}','{3}','{4}'); select last_insert_id();", name, lastName, dpi, age, phoneNumber);
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();

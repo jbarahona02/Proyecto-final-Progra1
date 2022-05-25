@@ -78,7 +78,7 @@
     <Content Include="wsDriver.asmx" />
     <Content Include="wsInfraction.asmx" />
     <Content Include="wsInfractionDetail.asmx" />
-    <Content Include="wsInfractionReport.asmx" />
+    <Content Include="wsReports.asmx" />
     <Content Include="wsPayment.asmx" />
     <Content Include="wsSanction.asmx" />
     <Content Include="wsUser.asmx" />
@@ -89,7 +89,7 @@
     <Compile Include="Clases\csDriver.cs" />
     <Compile Include="Clases\csInfraction.cs" />
     <Compile Include="Clases\csInfractionDetail.cs" />
-    <Compile Include="Clases\csInfractionReport.cs" />
+    <Compile Include="Clases\csReports.cs" />
     <Compile Include="Clases\csPayment.cs" />
     <Compile Include="Clases\csSanction.cs" />
     <Compile Include="Clases\csUser.cs" />
@@ -111,8 +111,8 @@
       <DependentUpon>wsInfractionDetail.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="wsInfractionReport.asmx.cs">
-      <DependentUpon>wsInfractionReport.asmx</DependentUpon>
+    <Compile Include="wsReports.asmx.cs">
+      <DependentUpon>wsReports.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="wsPayment.asmx.cs">

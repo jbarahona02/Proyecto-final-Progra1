@@ -46,7 +46,7 @@ namespace infraccionVehicular.Clases
                 cn.Open();
 
                 MySqlDataAdapter dataAdapter;
-                dataAdapter = new MySqlDataAdapter("select *from driver where driverLicense = " + driverLicense, cn);
+                dataAdapter = new MySqlDataAdapter("select * from driver where driverLicense = '" + driverLicense + "'", cn);
                 dataAdapter.Fill(ds);
 
                 cn.Close();
@@ -73,7 +73,7 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = insert;
-                cmd.CommandText += string.Format("'{0}','{1}',{2}); select last_insert_id();", driverLicense, name, lastName, age);
+                cmd.CommandText += string.Format("'{0}','{1}','{2}','{3}'); select 1;", driverLicense, name, lastName, age);
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
@@ -95,7 +95,7 @@ namespace infraccionVehicular.Clases
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings[connection].ConnectionString;
                 cn.Open();
 
-                MySqlCommand command = new MySqlCommand("update driver set name = '" + name + "', lastName = '" + lastName + "', age= '" + age + "' where driverLicense = " + driverLicense, cn);
+                MySqlCommand command = new MySqlCommand("update driver set name = '" + name + "', lastName = '" + lastName + "', age= '" + age + "' where driverLicense = '" + driverLicense + "'", cn);
                 result = command.ExecuteNonQuery();
                 cn.Close();
 
@@ -118,7 +118,7 @@ namespace infraccionVehicular.Clases
                 cn.ConnectionString = ConfigurationManager.ConnectionStrings[connection].ConnectionString;
                 cn.Open();
 
-                MySqlCommand command = new MySqlCommand("delete from driver where driverLicense = " + driverLicense, cn);
+                MySqlCommand command = new MySqlCommand("delete from driver where driverLicense = '" + driverLicense + "'", cn);
                 respuesta = command.ExecuteNonQuery();
                 cn.Close();
             }

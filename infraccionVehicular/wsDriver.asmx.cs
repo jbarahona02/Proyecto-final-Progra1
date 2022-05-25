@@ -25,25 +25,25 @@ namespace infraccionVehicular
         }
 
         [WebMethod]
-        public DataSet findAgent(string driverLicense)
+        public DataSet findDriver(string driverLicense)
         {
             return new Clases.csDriver().findDriver(driverLicense);
         }
 
         [WebMethod]
-        public Int32 saveDriver(string driverLicense, string name, string lastName, string age)
+        public Int32 insertDriver(string driverLicense, string name, string lastName, string age)
         {
             return new Clases.csDriver().saveDriver(driverLicense, name, lastName, age);
         }
 
         [WebMethod]
-        public Int32 updateAgent(string driverLicense, string name, string lastName, string age)
+        public Int32 updateDriver(string driverLicense, string name, string lastName, string age)
         {
             return new Clases.csDriver().updateDriver(driverLicense, name, lastName, age);
         }
 
         [WebMethod]
-        public Int32 deleteAgent(string driverLicense)
+        public Int32 deleteDriver(string driverLicense)
         {
             return new Clases.csDriver().deleteDriver(driverLicense);
         }

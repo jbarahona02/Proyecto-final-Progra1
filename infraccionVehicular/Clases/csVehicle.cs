@@ -15,7 +15,7 @@ namespace infraccionVehicular.Clases
         public DataSet findAll()
         {
             DataSet ds = new DataSet();
-            
+
             try
             {
                 MySqlConnection cn = new MySqlConnection();
@@ -24,14 +24,15 @@ namespace infraccionVehicular.Clases
 
                 MySqlDataAdapter dataAdapter;
                 dataAdapter = new MySqlDataAdapter("select *from vehicle;", cn);
-                dataAdapter.Fill(ds);   
+                dataAdapter.Fill(ds);
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
 
-            return ds;  
+            return ds;
         }
 
         public DataSet findById(int id)
@@ -46,9 +47,10 @@ namespace infraccionVehicular.Clases
                 MySqlDataAdapter dataAdapter;
                 dataAdapter = new MySqlDataAdapter("select *from vehicle where id = " + id, cn);
                 dataAdapter.Fill(ds);
-                
+
                 cn.Close();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -56,7 +58,7 @@ namespace infraccionVehicular.Clases
             return ds;
         }
 
-        public Int32 save(string license, string type, string color, string line, string brand, int driverId)
+        public Int32 save(string license, string type, string color, string line, string brand, string driverId)
         {
             Int32 result = 0;
             string insert = "insert into vehicle(licensePlate, type, color, line, brand, driverId) value( ";
@@ -69,21 +71,22 @@ namespace infraccionVehicular.Clases
 
                 MySqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = insert;
-                cmd.CommandText += string.Format("'{0}','{1}','{2}','{3}','{4}',{5}", license, type, color, line, brand, driverId);
+                cmd.CommandText += string.Format("'{0}','{1}','{2}','{3}','{4}',{5}); select last_insert_id();", license, type, color, line, brand,"'" + driverId + "'");
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
 
             return result;
         }
-        public Int32 update(string license, string type, string color, string line, string brand, int driverId, int id)
+        public Int32 update(int id, string license, string type, string color, string line, string brand, string driverId)
         {
             Int32 result = 0;
-                
+
             try
             {
                 MySqlConnection cn = new MySqlConnection();
@@ -94,7 +97,8 @@ namespace infraccionVehicular.Clases
                 result = command.ExecuteNonQuery();
                 cn.Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -115,7 +119,8 @@ namespace infraccionVehicular.Clases
                 MySqlCommand command = new MySqlCommand("delete from vehicle where id = " + id, cn);
                 respuesta = command.ExecuteNonQuery();
                 cn.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }

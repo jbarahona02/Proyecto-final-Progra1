@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Data;
 
 namespace infraccionVehicular
 {
@@ -18,9 +19,33 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public DataSet findVehicles()
         {
-            return "Hola a todos";
+            return new Clases.csVehicle().findAll();
+        }
+
+        [WebMethod]
+        public DataSet findVehicle(int id)
+        {
+            return new Clases.csVehicle().findById(id);
+        }
+
+        [WebMethod]
+        public Int32 insertVehicle(string licensePlate, string type, string color, string line, string brand, string driverId)
+        {
+            return new Clases.csVehicle().save(licensePlate, type, color, line, brand, driverId);
+        }
+
+        [WebMethod]
+        public Int32 updateVehicle(int id, string licensePlate, string type, string color, string line, string brand, string driverId)
+        {
+            return new Clases.csVehicle().update(id, licensePlate, type, color, line, brand, driverId);
+        }
+
+        [WebMethod]
+        public Int32 deleteVehicle(int id)
+        {
+            return new Clases.csVehicle().delete(id);
         }
     }
 }

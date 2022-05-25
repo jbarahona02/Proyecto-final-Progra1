@@ -19,27 +19,32 @@ namespace infraccionVehicular
     {
 
         [WebMethod]
-        public DataSet infractionList() {
+        public DataSet findInfractions()
+        {
             return new Clases.csInfraction().infractionList();
         }
 
         [WebMethod]
-        public DataSet infraction(int id) {
+        public DataSet findInfraction(int id)
+        {
             return new Clases.csInfraction().infraction(id);
         }
 
         [WebMethod]
-        public Int32 insertInfraction(DateTime date, string status, double total, int agentId, int vehicleId) {
-            return new Clases.csInfraction().insertInfraction(date, total, agentId, vehicleId);
+        public Int32 insertInfraction(double total, int agentId, int vehicleId)
+        {
+            return new Clases.csInfraction().insertInfraction(total, agentId, vehicleId);
         }
 
         [WebMethod]
-        public Int32 updateInfraction(int id, DateTime date, string status, double total, int agentId, int vehicleId) {
-            return new Clases.csInfraction().updateInfraction(id, date, status, total, agentId, vehicleId);
+        public Int32 updateInfraction(int id, string status, double total, int agentId, int vehicleId)
+        {
+            return new Clases.csInfraction().updateInfraction(id, status, total, agentId, vehicleId);
         }
 
         [WebMethod]
-        public Int32 deleteInfraction(int id) {
+        public Int32 deleteInfraction(int id)
+        {
             return new Clases.csInfraction().deleteInfraction(id);
         }
 
